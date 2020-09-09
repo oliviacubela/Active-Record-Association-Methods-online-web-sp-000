@@ -7,11 +7,7 @@ class Song < ActiveRecord::Base
   end
 
   def drake_made_this
-    if Artist(name: "Drake").exists?
-      drake.songs << self
-  else
-    drake = Artist.create(name: "Drake")
-    drake
+    Artist.find_or_create_by(name: "Drake")
   end
 end
 # when this method is called it should assign the song's artist to Drake
